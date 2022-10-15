@@ -1,5 +1,3 @@
-Fhis is the second test to see wether i can push to your repository...
-
 # A Sample Java Web-Application
 :experimental:
 
