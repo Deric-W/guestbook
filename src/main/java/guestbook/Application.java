@@ -60,12 +60,12 @@ public class Application {
 		return args -> {
 
 			Stream.of( //
-					new GuestbookEntry("H4xx0r", "first!!!"), //
-					new GuestbookEntry("Arni", "Hasta la vista, baby"), //
+					new GuestbookEntry("H4xx0r", "first!!!","https://camo.githubusercontent.com/270d432a1df2cfd1ac26a6ad54689bb80ed6bd608b26d8b403aa1bc6ec93974e/68747470733a2f2f6834636b65722e6f72672f696d672f6834636b6572322e504e47"), //
+					new GuestbookEntry("Arni", "Hasta la vista, baby","https://i.ebayimg.com/images/g/7koAAOSw8L5b9bE8/s-l400.jpg"), //
 					new GuestbookEntry("Duke Nukem",
-							"It's time to kick ass and chew bubble gum. And I'm all out of gum."), //
+							"It's time to kick ass and chew bubble gum. And I'm all out of gum.","https://i0.wp.com/www.plauschangriff.de/wp-content/uploads/2018/07/dukenukem.jpg?fit=500%2C500&ssl=1"), //
 					new GuestbookEntry("Gump1337",
-							"Mama always said life was like a box of chocolates. You never know what you're gonna get.")) //
+							"Mama always said life was like a box of chocolates. You never know what you're gonna get.","https://img.freepik.com/free-vector/cute-astronaut-cat-lying-planet-animal-space_138676-2038.jpg?w=2000")) //
 					.forEach(guestbook::save);
 		};
 	}

@@ -26,3 +26,9 @@ form#form {
 .down{
 	margin-top: 1em;
 }
+
+.img{
+	width: auto;
+	height: 100px;
+	border-radius: 50%;
+}
