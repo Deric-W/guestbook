@@ -39,13 +39,14 @@ class GuestbookControllerUnitTests {
 	@Test
 	void populatesModelForGuestbook() {
 
-		GuestbookEntry entry = new GuestbookEntry("Yoda", "May the 4th b with you!");
+		GuestbookEntry entry = new GuestbookEntry("Yoda", "dagobah@galaxy.de", "May the 4th b with you!");
 		doReturn(Streamable.of(entry)).when(guestbook).findAll();
 
 		Model model = new ExtendedModelMap();
 
 		GuestbookController controller = new GuestbookController(guestbook);
-		String viewName = controller.guestBook(model, new GuestbookForm(null, null));
+        String email = "Koenig@Sachsen.de";
+        String viewName = controller.guestBook(model, new GuestbookForm(null, email, null));
 
 		assertThat(viewName).isEqualTo("guestbook");
 		assertThat(model.asMap().get("entries")).isInstanceOf(Iterable.class);
