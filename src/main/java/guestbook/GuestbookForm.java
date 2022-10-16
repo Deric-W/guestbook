@@ -16,6 +16,7 @@
 package guestbook;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Null;
 
 /**
  * Type to bind request payloads and make them available in the controller. In contrast to {@link GuestbookEntry} it is
@@ -43,11 +44,14 @@ class GuestbookForm {
 	 * @param name the value to bind to {@code name}
 	 * @param text the value to bind to {@code text}
 	 */
-	public GuestbookForm(String name, String text, int format) {
+	public GuestbookForm(String name, String text, String format) {
 
 		this.name = name;
 		this.text = text;
-		this.format = format;
+		if(format == null) this.format = 0;
+		else {if(format.equals("bold")) this.format = 1;
+				else this.format = 0;}
+		
 	}
 
 	/**

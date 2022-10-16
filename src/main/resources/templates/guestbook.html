@@ -43,6 +43,10 @@
 		</div>
 
 		<form method="post" role="form" class="gb-form" id="form" hx:post="@{/guestbook}" hx-target="#entries" hx-swap="beforeend" _="on entryAdded me.reset()" th:action="@{/guestbook}" th:object="${form}">
+			<button class="bold basic"
+					type="button">
+				Bold
+				</button>
 			<div class="form-group">
 				<label for="name" th:text="#{guestbook.form.name}">Name</label><br /> 
 				<input class="form-control" type="text" th:field="*{name}" th:errorclass="is-invalid" required="required" />
@@ -56,12 +60,8 @@
 			<div class="form-group">
 				<label for="format" th:text="#{guestbook.form.format}">Format</label><br /> 
 				<textarea th:field="*{text}" th:errorclass="is-invalid" class="form-control" required="required"></textarea>
-				<div th:if="${#fields.hasErrors('text')}" class="invalid-feedback" th:text="#{guestbook.form.text.required}">Please provide a text.</div>
+				<div th:if="${#fields.hasErrors('format')}" class="invalid-feedback" th:text="#{guestbook.form.format.required}">Please provide a text.</div>
 			</div>
-			<button class="bold basic"
-					type="button">
-				B
-				</button>
 			<input type="submit" class="btn btn-secondary down" th:value="#{guestbook.form.submit}" value="Senden" />
 		</form>
 
