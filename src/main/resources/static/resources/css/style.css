@@ -26,3 +26,8 @@ form#form {
 .down{
 	margin-top: 1em;
 }
+
+.basic{
+	border: 0;
+	text-align: center;
+}
