@@ -128,6 +128,29 @@ class GuestbookController {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    /**
+     * Handles AJAX requests to change the rating of a {@link GuestbookEntry}.
+     * 
+     * There is currently no restriction on how often a user can vote.
+     * 
+     * @param entry an {@link Optional} with the {@link GuestbookEntry} to vote on
+     * @param vote an {@link Vote} to perform
+     * @return a redirect string
+     */
+    @HxRequest
+    @PostMapping(path = "/guestbook/{entry}/{vote}")
+    HtmxResponse voteEntry(
+            @PathVariable(name = "entry") Optional<GuestbookEntry> entry,
+            @PathVariable(name = "vote") Vote vote,
+            Model model
+        ) {
+        return entry.map(it -> {
+            it.changeRating(vote.getRating());
+            model.addAttribute("entry", guestbook.save(it));
+            return new HtmxResponse().addTemplate("guestbook :: rating");
+        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     // Request methods answering HTMX requests
 
     /**

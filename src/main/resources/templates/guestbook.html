@@ -36,7 +36,26 @@
 						<blockquote class="entrytext" th:text="${entry.text}"></blockquote>
 					</div>
 					<div class="card-footer">
-						<footer class="date" th:text="${#temporals.format(entry.date, 'dd. MMMM yyyy - HH:mm')}">Datum</footer>
+						<footer>
+							<div class="date" th:text="${#temporals.format(entry.date, 'dd. MMMM yyyy - HH:mm')}">Datum</div>
+							<div class="voting">
+								<button
+									class="upvote"
+									hx:post="@{/guestbook/{id}/UP(id=${entry.id})}"
+									hx-trigger="click"
+									hx-swap="outerHTML"
+									th:attr="hx-target=|#rating${entry.id}|"
+								>👍</button>
+								<button
+									class="downvote"
+									hx:post="@{/guestbook/{id}/DOWN(id=${entry.id})}"
+									hx-trigger="click"
+									hx-swap="outerHTML"
+									th:attr="hx-target=|#rating${entry.id}|"
+								>👎</button>
+								<div th:id="rating+${entry.id}" class="rating" th:text="${entry.rating}" th:fragment="rating">Rating</div>
+							</div>
+						</footer>
 					</div>
 				</div>
 			</div>
