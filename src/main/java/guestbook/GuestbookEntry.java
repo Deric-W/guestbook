@@ -47,6 +47,7 @@ class GuestbookEntry {
 
 		Assert.hasText(name, "Name must not be null or empty!");
 		Assert.hasText(text, "Text must not be null or empty!");
+		Assert.hasText(imgLink, "Text must not be null or empty!");
 
 		this.name = name;
 		this.imgLink = imgLink;

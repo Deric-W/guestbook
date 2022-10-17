@@ -53,7 +53,8 @@
 
 			<div class="form-group">
 				<label for="imageLink" th:text="#{guestbook.form.imageLink}">ImageLink</label><br />
-				<input class="form-control" type="text" th:field="*{imgLink}" placeholder="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"/>
+				<input class="form-control" type="text" th:field="*{imgLink}" th:errorclass="is-invalid" required="required"/>
+				<div th:if="${#fields.hasErrors('imgLink')}" class="invalid-feedback" th:text="#{guestbook.form.imgLink.required}">Please provide a ImageLink.</div>
 			</div>
 
 
