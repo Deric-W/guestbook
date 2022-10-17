@@ -36,6 +36,7 @@ class GuestbookEntry {
 	private @Id @GeneratedValue Long id;
 	private final String name, text;
 	private final LocalDateTime date;
+	private int rating;
 
 	/**
 	 * Creates a new {@link GuestbookEntry} for the given name and text.
@@ -51,6 +52,7 @@ class GuestbookEntry {
 		this.name = name;
 		this.text = text;
 		this.date = LocalDateTime.now();
+		this.rating = 0;
 	}
 
 	@SuppressWarnings("unused")
@@ -58,6 +60,7 @@ class GuestbookEntry {
 		this.name = null;
 		this.text = null;
 		this.date = null;
+		this.rating = 0;
 	}
 
 	public String getName() {
@@ -74,5 +77,19 @@ class GuestbookEntry {
 
 	public String getText() {
 		return text;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	/**
+	 * Change the rating of this post
+	 * 
+	 * @param amount is the amount which should be added to the current rating
+	 * @exception ArithmeticException if the new rating would overflow
+	 */
+	public void changeRating(int amount) {
+		this.rating = Math.addExact(this.rating, amount);
 	}
 }
